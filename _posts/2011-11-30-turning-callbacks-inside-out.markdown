@@ -9,7 +9,7 @@ blocks](http://www.mattsears.com/articles/2011/11/27/ruby-blocks-as-dynamic-call
 The crux of his method was the building of an anonymous class that
 would respond correctly to his callbacks
 
-````ruby
+``` ruby
 class Proc
   def callback(callable, *args)
     self === Class.new do
@@ -20,7 +20,7 @@ class Proc
     end.new
   end
 end
-````
+```
 
 For some reason this post captured my imagination and I started to
 deconstruct his method, as I couldn't quite grasp why it worked. What
@@ -28,7 +28,7 @@ follows is a deconstruction of his method.
 
 His example involved a small handler for "posting" twitter messages:
 
-````ruby
+``` ruby
 def tweet(message, &block)
   Twitter.update(message)
   block.callback :success
@@ -44,14 +44,14 @@ tweet "Ruby methods with multiple blocks. #lolruby" do |on|
     puts "Error: #{status}"
   end
 end
-````
+```
 
 I'm going to work backwards, substituting and expanding this code
 until we reach a good position to see what's really happening. We'll
 ignore Matt's "bonus" style for focus. Firstly, just expand the call
 to `#tweet`, and define the block as a local lambda:
 
-````ruby        
+``` ruby
 block = lambda |on|
   on.success do
     puts "Tweet successful!"
@@ -67,14 +67,14 @@ begin
 rescue => e
   block.callback :failure, e.message
 end
-````
+```
 
 For now, let's ignore the `rescue` clause, in fact we can trim
 everything except for one of the `block.callback` calls. So, going
 with `:success`:
 
 
-````ruby        
+``` ruby
 block = lambda |on|
   on.success do
     puts "Tweet successful!"
@@ -85,11 +85,11 @@ block = lambda |on|
 end
 
 block.callback :success
-````
+```
 
 Once we get to here, we need to go back to our original definition of `Proc#callback`
 
-````ruby
+``` ruby
 class Proc
   def callback(callable, *args)
     self === Class.new do
@@ -110,14 +110,14 @@ block = lambda |on|
 end
 
 block.callback :success
-````
+```
 
 Expanding out `Proc#callback`, and realising that in this context,
 `self` is `block`, and `callable` is `:success`, and `args` is `[]`
 (In the case of the `:failure`, `args` would be the parameters passed
 to the callback),
 
-````ruby
+``` ruby
 block = lambda |on|
   on.success do
     puts "Tweet successful!"
@@ -132,11 +132,11 @@ block === Class.new do
   define_method(method_name) { |&block| block.nil? ? true : block.call }
   def method_missing(method_name, *args, &block) false; end
 end.new
-````
+```
 
 Simplifying the definition of block as a lambda and the `Proc#===` call, our code becomes
 
-````ruby
+``` ruby
 lambda |on|
   on.success do
     puts "Tweet successful!"
@@ -149,12 +149,12 @@ end.call(Class.new do
   define_method(method_name) { |&block| block.nil? ? true : block.call }
   def method_missing(method_name, *args, &block) false; end
 end.new)
-````
+```
 
 Time to simplify the anonymous class definition, let's get rid of the
 error handling in `#success` too.
 
-````ruby
+``` ruby
 lambda |on|
   on.success do
     puts "Tweet successful!"
@@ -168,12 +168,12 @@ end.call(Class.new do
   end
   def method_missing(method_name, *args, &block) false; end
 end.new)
-````
+```
 
 Hey, now we are getting somewhere! Let's give the anonymous class a name.
 
 
-````ruby
+``` ruby
 class SuccessCallback
   def success &block
     block.call
@@ -191,7 +191,7 @@ lambda |on|
     puts "Error: #{status}"
   end
 end.call(SuccessCallback.new)
-````
+```
 
 So what has happened? We've created a `SuccessCallback` class that
 *only* responds to `#success`. And all `#success` does is call a block
@@ -200,7 +200,7 @@ passed to it. Any other method call will absorb any parameters and
 in the next expansion, where we unwrap the callback lambda.
 
 
-````ruby
+``` ruby
 class SuccessCallback
   def success &block
     block.call
@@ -218,7 +218,7 @@ end
 on.failure do |status|
   puts "Error: #{status}"
 end
-````
+```
 
 And it becomes clear from looking at the definition of
 `SuccessCallback` why the callback works. `on.success` just
@@ -228,7 +228,7 @@ ignores the passed block.
 
 In the `:failure` case, we would have ended up with:
 
-````ruby
+``` ruby
 class FailureCallback
   def failure &block
     block.call(message) # message is the value of `e.message` in the original code
@@ -246,7 +246,7 @@ end
 on.failure do |status|
   puts "Error: #{status}"
 end
-````
+```
 
 So, in essence, Matt's method works by:
 
@@ -265,7 +265,7 @@ grasp how exactly Matt's code worked. But what we can do is extract
 out the concept embodied by the anonymous class, and reformulate the
 code.
 
-````ruby
+``` ruby
 class SavantTrampoline
   def initialize method_name, *args
     @method_name = method_name.to_sym
@@ -285,7 +285,7 @@ class Proc
     self.call SavantTrampoline.new(callable, *args)
   end
 end
-````
+```
 
 As a pedagogical exercise, this formulation allows me to more clearly
 understand the roles of each actor in this code.
