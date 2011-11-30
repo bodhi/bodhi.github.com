@@ -7,6 +7,10 @@ layout: default
 creating callbacks with Ruby
 blocks](http://www.mattsears.com/articles/2011/11/27/ruby-blocks-as-dynamic-callbacks)
 
+As a brief aside, Matt's site is not
+[CC-licenced](http://creativecommons.org), so I hope he doesn't mind
+me lifting the code from his site for this exercise
+
 The crux of his method was the building of an anonymous class that
 would respond correctly to his callbacks
 
