@@ -1,5 +1,6 @@
 ---
 title: Turning ruby block callbacks into lego
+layout: default
 ---
 
 [Matt Sears](http://www.mattsears.com) wrote a [great article about
