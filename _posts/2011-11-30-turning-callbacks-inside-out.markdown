@@ -52,7 +52,7 @@ until we reach a good position to see what's happening. We'll ignore
 Matt's "bonus" style for focus. Firstly, just expand the call to
 `#tweet`, and define the block as a local lambda:
 
-    block = lambda |on|
+    block = lambda do |on|
       on.success do
         puts "Tweet successful!"
       end
@@ -72,7 +72,7 @@ let's ignore the `rescue` clause. In fact we can trim everything
 except for one of the `block.callback` calls. So, going with
 `:success`:
 
-    block = lambda |on|
+    block = lambda do |on|
       on.success do
         puts "Tweet successful!"
       end
@@ -96,7 +96,7 @@ At this point we need to go back to our original definition of
       end
     end
 
-    block = lambda |on|
+    block = lambda do |on|
       on.success do
         puts "Tweet successful!"
       end
@@ -112,7 +112,7 @@ Expanding out `Proc#callback`, and realising that in this context,
 the case of the `:failure` callback, `args` would be the parameters
 passed to the callback.
 
-    block = lambda |on|
+    block = lambda do |on|
       on.success do
         puts "Tweet successful!"
       end
@@ -131,7 +131,7 @@ Simplifying the definition of block as a lambda and the `Proc#===`
 call (Another neat thing that I learnt from Matt's post), our code
 becomes
 
-    lambda |on|
+    lambda do |on|
       on.success do
         puts "Tweet successful!"
       end
@@ -147,7 +147,7 @@ becomes
 Time to simplify the anonymous class definition, let's get rid of the
 error handling in `#success` too.
 
-    lambda |on|
+    lambda do |on|
       on.success do
         puts "Tweet successful!"
       end
@@ -172,7 +172,7 @@ Hey, now we are getting somewhere! Let's give the anonymous class a name.
       end
     end
 
-    lambda |on|
+    lambda do |on|
       on.success do
         puts "Tweet successful!"
       end
