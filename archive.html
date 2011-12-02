@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+
+    <title>The Techscursion Archive.</title>
+
+    <link rel="stylesheet" href="/style.css" type="text/css">
+  </head>
+
+  <body>
+    <h1>The Techscursion Archive</h1>
+
+    {% for page in site.posts %}
+    <article>
+      <h2><a href="{{page.url}}">{{ page.title }}</a></h2>
+      <time>Published on {{ page.date | date_to_long_string }}</time>
+    </article>
+    {% endfor %}
+
+    <footer>
+      <p>
+        The <a href="/">Techscursion</a> Archive. There may be more in
+        the <a href="/archive">archive</a>, but you've <em>just
+        skimmed it</em>, so <a href="/about">read about the site</a>
+        instead. <em>If you like.</em>
+      </p>
+    </footer>
+  </body>
+</html> 
+
