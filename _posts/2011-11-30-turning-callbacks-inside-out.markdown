@@ -1,5 +1,5 @@
 ---
-title: Turning ruby block callbacks inside out
+title: Turning Ruby block callbacks inside out
 layout: default
 ---
 [Matt Sears](http://www.mattsears.com) wrote a [great article about
