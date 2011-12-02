@@ -1,7 +1,167 @@
-body { 
-  width: 600px;
+body, article {
+  margin:0; padding:0;
+  font-family: "Book Antiqua", Georgia, "Times New Roman", serif;
+  font-size: 18px;
 }
 
-pre { 
-  background: #EEE;
+a {
+  color: #09F;
+  transition: all 500ms ease;
+  -webkit-transition: all 500ms ease;
+  -moz-transition: all 500ms ease;
+  -o-transition: all 500ms ease;
+  -ms-transition: all 500ms ease;
+  padding: 0.1em 0.2em;
+  margin: -0.1em -0.2em;
+  border-radius: .2em;
+  -webkit-border-radius: .2em;
+  -moz-border-radius: .2em;
+}
+
+a:visited {
+  color: #90F;
+}
+
+a:hover {
+  background-color: #09F;
+  color: white;
+}
+
+article {
+  margin: 2em 0em;
+}
+
+article, section, footer {
+  display: -webkit-box;
+  box-orient: vertical;
+  box-align: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: center;
+  margin-bottom: 25px;
+}
+
+article#front {
+  font-size: 24px;
+}
+
+article#front p {
+  width: 650px;
+  text-align: center;
+  font-style: italic;
+}
+
+article > p, article > ol, article > ul, article > aside, article > div.highlight {
+  width: 800px;
+  line-height: 25px;
+  margin-bottom: 25px;
+}
+
+article > blockquote {
+  width: 770px;
+  font-style: italic;
+}
+
+h1 + time, h2 + time, h3 + time {
+  font-size: 16px;
+  color: #999;
+  margin-top: -25px;
+  margin-bottom: 25px;
+  display: block;
+  text-align: center;
+}
+
+h2 + time {
+  margin-top: -20px;
+}
+
+article li p {
+  padding-left: 0;
+  width: auto;
+}
+
+article div.highlight {
+  width: 100%;
+  background: #F9F9F9 !important;
+  font-size: 18px;
+  border-top: 1px solid #EEE;
+  border-bottom: 1px solid #EEE;
+
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: center;
+}
+
+article pre {
+  width: 800px;
+  margin: 0;
+}
+
+article p code {
+  padding: 0.1em 0.2em;
+  margin: -0.1em 0;
+  border-radius: .2em;
+  -webkit-border-radius: .2em;
+  -moz-border-radius: .2em;
+  border: 1px solid #EEE;
+  background: #F5F5F5 !important;
+}
+
+article pre code {
+  font-family: Inconsolata;
+}
+
+article p + p {
+  text-indent: 15px;
+}
+
+h1, h2, h3 {
+  text-align: center;
+  font-weight: normal;
+  font-size: 36px;
+  letter-spacing: -1px;
+}
+
+h2 {
+  font-size: 24px;
+}
+
+h3 {
+  font-size: 22px;
+}
+
+aside {
+  font-size: 16px;
+  color: #999;
+  margin: 0.5em 2em;
+}
+
+hr {
+  width: 400px;
+  border: none;
+  border-top: 1px solid #CCC;
+  margin: 0 0 24px;
+}
+
+footer p {
+  width: 600px;
+  text-align: center;
+  color: #999;
+}
+
+footer a {
+  color: #9CF;
+}
+
+footer a:visited {
+  color: #C9F;
+}
+
+footer a:hover {
+  background: #9CF;
+  color: white;
+}
+
+footer a:hover:visited {
+  background: #C9F;
+/*  color: white; */
 }
