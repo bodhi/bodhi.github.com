@@ -265,7 +265,7 @@ So, in essence, Matt's method works by:
 
 3. The callback block calling *every* event method on the anonymous
 instance. However, since the anonymous class ignores all messages bar
-the event that was "triggered", actually evaluating only the block
+the event that was "triggered", the callback only executes the block
 matching the trigger.
 
 Writing out these steps, I feel a bit sheepish in taking so long to
