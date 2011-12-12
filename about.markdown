@@ -15,11 +15,10 @@ Street](http://www.youtube.com/watch?v=KTc3PsW5ghQ).
 
 > Blah blah blah. get to the point!
 
-Techscursion is an archive of articles – well, [only one at
-writing](2011/11/turning-callbacks-inside-out) – on programming. It's
-also a manufactured excuse to go ultra-minimal on style. It's also a
-place where I plan to push myself to <del>vote</del> launch early,
-launch often, go all
+Techscursion is an [archive](/archive) of articles on
+programming. It's also a manufactured excuse to attempt go
+ultra-minimal on style. It's also a place where I plan to push myself
+to <del>vote</del> launch early, launch often, go all
 [MVP](http://en.wikipedia.org/wiki/Minimum_viable_product) and
 actually just write shit. Hah, the irony. After writing the preceeding
 paragraphs I've spent an hour dicking around with the site's CSS. Time

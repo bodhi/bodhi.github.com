@@ -61,6 +61,10 @@ article > blockquote {
   font-style: italic;
 }
 
+article > blockquote em {
+  font-weight: bold;
+}
+
 h1 + time, h2 + time, h3 + time {
   font-size: 16px;
   color: #999;
