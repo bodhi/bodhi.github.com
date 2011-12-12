@@ -157,7 +157,7 @@ jQuery("#copy").click(function(e) {
     var link = this;
     e.preventDefault();
     setTimeout(function() {
-      // create a copy of the orignail event
+      // create a copy of the original event
       var newEvent = document.createEvent("MouseEvent");
       newEvent.initMouseEvent(e.type, e.bubbles, e.cancelable, e.view, 
                  e.detail, e.screenX, e.screenY, e.clientX, e.clientY, 
@@ -222,7 +222,7 @@ paragraph would indicate *maybe*, the second implies *yes*. I'm
 probably doing something wrong.
 
 I imagine this is documented somewhere in one of those *Javascript:
-all the aweseome stuff, none of the crap*–type books, but I don't have
+all the awesome stuff, none of the crap*–type books, but I don't have
 copies of them, so I can't check. If you can point me to a good
 discussion about this, [please do](http://twitter.com/bodhi). As for
 my project, I'll be reworking the tracking code to get my
