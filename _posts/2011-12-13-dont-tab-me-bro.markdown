@@ -173,7 +173,7 @@ jQuery("#copy").click(function(e) {
 
 Cool! It works. Wrapping it up in a proper little function is left as
 an exercise to the reader. Another method to try would be triggering
-the callback via plain old jQuery::
+the callback via plain old jQuery:
 
 <a href="#triggered-event" id="trigger">Plain old jQuery trigger</a>
 
