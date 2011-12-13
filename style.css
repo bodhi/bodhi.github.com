@@ -1,3 +1,8 @@
+body, section, article, time, code, pre, h1, h2, h3, p, ol, ul, li, aside, blockquote {
+  margin: 0;
+  padding: 0;
+}
+
 body, article {
   margin:0; padding:0;
   font-family: "Book Antiqua", Georgia, "Times New Roman", serif;
@@ -28,7 +33,7 @@ a:hover {
 }
 
 article {
-  margin: 2em 0em;
+  margin: 50px 0;
 }
 
 article, section, footer {
@@ -37,23 +42,26 @@ article, section, footer {
   box-align: center;
   -webkit-box-orient: vertical;
   -webkit-box-align: center;
-  margin-bottom: 25px;
+  margin-bottom: 48px;
 }
 
-article#front {
-  font-size: 24px;
-}
-
-article#front p {
-  width: 650px;
-  text-align: center;
-  font-style: italic;
-}
-
-article > p, article > ol, article > ul, article > aside, article > div.highlight {
+article > p, article > ol, article > ul, article > aside, article > div.highlight, article > blockquote {
   width: 800px;
   line-height: 25px;
-  margin-bottom: 25px;
+}
+
+article > a, article > blockquote, article > ol, article > ul {
+  margin: 10px 0 15px;
+  display: block;
+}
+
+article > hr {
+  margin: 19px 0 0;
+  padding-bottom: 30px;
+}
+
+article > a {
+  margin-bottom: 16px;
 }
 
 article > blockquote {
@@ -65,19 +73,6 @@ article > blockquote em {
   font-weight: bold;
 }
 
-h1 + time, h2 + time, h3 + time {
-  font-size: 16px;
-  color: #999;
-  margin-top: -25px;
-  margin-bottom: 25px;
-  display: block;
-  text-align: center;
-}
-
-h2 + time {
-  margin-top: -20px;
-}
-
 article li p {
   padding-left: 0;
   width: auto;
@@ -86,13 +81,17 @@ article li p {
 article div.highlight {
   width: 100%;
   background: #F9F9F9 !important;
-  font-size: 18px;
+  background: rgba(240, 240, 240, 0.6) !important;
+  font-size: 17px;
   border-top: 1px solid #EEE;
   border-bottom: 1px solid #EEE;
 
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-box-align: center;
+
+  padding: 5px 0 9px;
+  margin: 4px 0 5px;
 }
 
 article pre {
@@ -108,6 +107,7 @@ article p code {
   -moz-border-radius: .2em;
   border: 1px solid #EEE;
   background: #F5F5F5 !important;
+  font-size: 17px;
 }
 
 article pre code {
@@ -115,41 +115,60 @@ article pre code {
 }
 
 article p + p {
-  text-indent: 15px;
+  text-indent: 25px;
 }
+
 
 h1, h2, h3 {
   text-align: center;
   font-weight: normal;
   font-size: 36px;
   letter-spacing: -1px;
+  line-height: 36px;
+  padding-top: 5px;
+  margin-bottom: 66px;
 }
 
 h2 {
   font-size: 24px;
+  padding-top: 9px;
+  margin-bottom: 5px;
 }
 
 h3 {
   font-size: 22px;
+  line-height: 25px;
+}
+
+h1 + time, h2 + time, h3 + time {
+  font-size: 16px;
+  color: #999;
+  display: block;
+  text-align: center;
+  height: 25px;
+  margin: -48px 0 23px;
+}
+
+h2 + time, h3 + time {
+  margin: 4px 0 -2px;
 }
 
 aside {
   font-size: 16px;
   color: #999;
-  margin: 0.5em 2em;
 }
 
 hr {
   width: 400px;
   border: none;
   border-top: 1px solid #CCC;
-  margin: 0 0 24px;
 }
 
 footer p {
   width: 600px;
   text-align: center;
   color: #999;
+  line-height: 25px;
 }
 
 footer a {
@@ -168,4 +187,31 @@ footer a:hover {
 footer a:hover:visited {
   background: #C9F;
 /*  color: white; */
+}
+
+article#front p {
+  font-size: 24px;
+  margin: -2px 0 2px;
+
+  width: 650px;
+  text-align: center;
+  font-style: italic;
+}
+
+#recent {
+  padding: 2px 0;
+}
+
+#recent article {
+  margin: 18px 0 0;
+}
+
+#recent article h3 {
+  margin: 0;
+  height: auto;
+}
+
+#archive h1 {
+  padding-top: 55px;
+  margin-bottom: 39px;
 }
