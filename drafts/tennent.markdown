@@ -77,7 +77,7 @@ due to Neal Gafter's 2006 article discussing
 mind, Gafter gets a bit of a free pass, as he hedges by referring to
 <q>Tennent's Correspondence and Abstraction Principles</q>.
 
-Katz also falls prey to this in his otherwise excellent
+Yehuda Katz also falls prey to this in his otherwise excellent
 [JavaScript Needs Blocks][js-needs-blocks], when he states:
 
 > In short, Tennent’s Correspondence Principle says:
