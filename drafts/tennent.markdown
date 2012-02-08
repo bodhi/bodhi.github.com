@@ -4,15 +4,15 @@ layout: default
 ---
 
 Over the years I've encountered several references to R.D. Tennent and
-his <q>principle of correspondence</q>. The first time I was Marc
-Chung's 2009 article,
-[How Closures Behave In Ruby][chung-blocks]. Going back and reading it
-now, Marc has removed the reference to the Principle, but
-[Google turns up][google-serp-tcp] a couple of pages about
-it. [A question on `programmers.stackexchange.com`][stackexchange-tcp]
-has an interesting exchange, which I will discuss later. But there
-doesn't appear to be a good source for *the actual statement* of the
-principle… until now.[^jk]
+his <q>principle of correspondence</q>. The first time was Marc
+Chung's 2009 article [How Closures Behave In
+Ruby][chung-blocks]. Going back and reading it now, Marc has removed
+the reference to the principle, but [Google turns up][google-serp-tcp]
+a couple of pages about it. [A question on
+`programmers.stackexchange.com`][stackexchange-tcp] has an interesting
+exchange, which I will discuss later. But there didn't appear to be a
+good source online for *the actual statement* of the principle… until
+now.[^jk]
 
 ## The Principle of Correspondence
 
