@@ -1,3 +1,7 @@
+body {
+  /* background: url(baseline.png); */
+}
+
 body, section, article, time, code, pre, h1, h2, h3, p, ol, ul, li, aside, blockquote {
   margin: 0;
   padding: 0;
@@ -36,7 +40,7 @@ article {
   margin: 50px 0;
 }
 
-article, section, footer {
+article, section, footer, div.footnotes, div.citation {
   display: -webkit-box;
   box-orient: vertical;
   box-align: center;
@@ -45,17 +49,17 @@ article, section, footer {
   margin-bottom: 48px;
 }
 
-article > p, article > ol, article > ul, article > aside, article > div.highlight, article > blockquote {
+article > p, article > ol, article > ul, article > aside, article > div.highlight, article > blockquote, div.footnotes > ol {
   width: 800px;
   line-height: 25px;
 }
 
-article > a, article > blockquote, article > ol, article > ul {
+article > a, article > blockquote, article > ol, article > ul, article > aside {
   margin: 10px 0 15px;
   display: block;
 }
 
-article > hr {
+article > hr, div.footnotes > hr {
   margin: 19px 0 0;
   padding-bottom: 30px;
 }
@@ -67,6 +71,12 @@ article > a {
 article > blockquote {
   width: 770px;
   font-style: italic;
+}
+
+blockquote blockquote {
+  margin-left: 30px;
+  margin-right: 30px;
+  font-style: normal;
 }
 
 article > blockquote em {
@@ -115,7 +125,7 @@ article pre code {
 }
 
 article p + p {
-  text-indent: 25px;
+  text-indent: 15px;
 }
 
 
@@ -131,13 +141,15 @@ h1, h2, h3 {
 
 h2 {
   font-size: 24px;
-  padding-top: 9px;
-  margin-bottom: 5px;
+  padding-top: 28px;
+  margin-bottom: 11px;
 }
 
 h3 {
   font-size: 22px;
   line-height: 25px;
+  padding-top: 23px;
+  margin-bottom: 2px;
 }
 
 h1 + time, h2 + time, h3 + time {
@@ -153,9 +165,20 @@ h2 + time, h3 + time {
   margin: 4px 0 -2px;
 }
 
-aside {
+sup {
+  font-size: 14px;
+  line-height: 0;
+}
+
+aside, div.footnotes, div.citation {
+  width: 770px;
   font-size: 16px;
   color: #999;
+}
+
+div.citation {
+  margin-top: -12px;
+  margin-bottom: 17px;
 }
 
 hr {
@@ -164,11 +187,20 @@ hr {
   border-top: 1px solid #CCC;
 }
 
+div.footnotes {
+  padding-bottom: 2px;
+}
+
+div.footnotes li p {
+  display: inline;
+}
+
 footer p {
   width: 600px;
   text-align: center;
   color: #999;
   line-height: 25px;
+  padding-top: 2px;
 }
 
 footer a {
@@ -189,6 +221,10 @@ footer a:hover:visited {
 /*  color: white; */
 }
 
+article#front {
+  margin-bottom: 13px;
+}
+
 article#front p {
   font-size: 24px;
   margin: -2px 0 2px;
@@ -199,19 +235,24 @@ article#front p {
 }
 
 #recent {
-  padding: 2px 0;
+  padding: 12px 0 11px;
+}
+
+#recent h2 {
+  margin-bottom: 15px;
 }
 
 #recent article {
-  margin: 18px 0 0;
+  margin: 0 0 4px;
 }
 
 #recent article h3 {
   margin: 0;
+  padding-top: 19px;
   height: auto;
 }
 
 #archive h1 {
   padding-top: 55px;
-  margin-bottom: 39px;
+  margin-bottom: 43px;
 }
