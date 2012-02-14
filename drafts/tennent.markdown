@@ -92,17 +92,16 @@ we programmers do.
 ## An Example
 
 To demonstrate a violation of the principle, Tennent points to
-PASCAL's <q markdown="1">`var` parameter mechanism</q>:
+PASCAL's `var`:
 
 > There is no definition mechanism that is the exact analog of the
 > `var` parameter mechanism.
 
-<aside markdown="1">PASCAL has a mechanism whereby a *variable* can be passed to a
-function, rather than the variable's *value*. This is similar to passing
-a pointer to a variable in C, but without needing to remember to
-dereference the variable.</aside>
-
-To explore this, let's start with a simple PASCAL procedure
+PASCAL's `var` is a mechanism whereby a *variable* can be passed to a
+function, rather than the variable's *value*. This is similar to
+passing a pointer to a variable in C, but without needing to remember
+to dereference the variable. To explore, let's start with a simple
+PASCAL procedure
 
 {% highlight pascal %}
 procedure inc(var i : integer);
@@ -118,7 +117,7 @@ begin
 end
 {% endhighlight %}
 
-running this will result in an output of `2`. An equivalent in C
+that, when run, will result in an output of `2`. An equivalent in C
 
 {% highlight c %}
 void inc(int *i) {
@@ -130,23 +129,9 @@ inc(&x);
 printf("%d", x);
 {% endhighlight %}
 
-also results in `2`.
-
-Interestingly, I believe these examples aren't directly replicable in
-Ruby or Javascript, as you can't pass *l-values* to a function, only
-*r-values*. The only way that I can think of to approximate it is by
-defining `inc` as a lambda with a free variable. This doesn't mean
-that either language violates the principle of correspondence, as
-neither Ruby nor Javascript have a way to define a reference
-
-<aside>
-For reference, since I only just learnt these definitions myself, an
-*l-value* is the *location* or *address* of a variable, and an
-*r-value* is the *value* that the variable contains.
-</aside>
-
-In PASCAL I know of no way to write an equivalent block definition for
-the above code, but in C we could rearrange as
+will also result in `2`. In PASCAL I know of no way to write an
+equivalent block definition for the above code. In fact, according to
+Tennent, there is *no* equivalent. But in C we could rearrange as
 
 {% highlight c %}
 int x = 1;
@@ -157,9 +142,24 @@ int x = 1;
 printf("%d", x);
 {% endhighlight %}
 
-and we can see that C's parameter mechanisms have
-generally[^c-qual] equivalent block definition
-counterparts, where PASCAL does not.
+and we can see that C's parameter mechanisms have generally[^c-qual]
+equivalent block definition counterparts, where PASCAL does not.
+
+Interestingly, I believe these examples aren't directly replicable in
+Ruby or Javascript - the two languages I use in anger – as you can't
+pass *l-values* to a function, only *r-values*. The only ways that I
+can think of to approximate are by wrapping the variable in an
+object[^cheating]; or by defining `inc` as a function with a free
+variable. This doesn't mean that either language violates the
+principle of correspondence, as neither Ruby nor Javascript have a way
+to define a reference variable *or* to define a function that accepts
+one.
+
+<aside markdown="1">
+For reference, since I only just learnt these definitions myself, an
+*l-value* is the *location* or *address* of a variable, and an
+*r-value* is the *value* that the variable contains.
+</aside>
 
 ## Ramifications of the principle
 
@@ -218,6 +218,7 @@ papers, so this is as much further reading for me as for you.
 [^c-qual]: I'm hardly a C expert, thus the qualification.
 [^java-closures]: Wait, this discussion has been going on for that long?!
 [^jk]: What is more likely is that my Google-Fu failed me.
+[^cheating]: also known as cheating.
 
 [gafter-java-closures]: http://gafter.blogspot.com.au/2006/08/tennents-correspondence-principle-and.html
 [google-serp-tcp]: http://www.google.com/search?q=Tennent's+correspondence+principle
