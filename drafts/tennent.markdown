@@ -5,14 +5,14 @@ layout: default
 
 Over the years I've encountered several references to R.D. Tennent and
 his <q>principle of correspondence</q>. The first time was Marc
-Chung's 2009 article [How Closures Behave In
-Ruby][chung-blocks]. Going back and reading it now, Marc has removed
-the reference to the principle, but [Google turns up][google-serp-tcp]
-a couple of pages about it. [A question on
-`programmers.stackexchange.com`][stackexchange-tcp] has an interesting
-exchange, which I will discuss later. But there didn't appear to be a
-good source online for *the actual statement* of the principle… until
-now.[^jk]
+Chung's 2009 article
+[How Closures Behave In Ruby][chung-blocks]. Going back and reading it
+now, Marc has removed the reference to the principle, but
+[Google turns up][google-serp-tcp] a couple of pages about
+it. [A question on `programmers.stackexchange.com`][stackexchange-tcp]
+has an interesting exchange, which I will discuss later. But there
+didn't appear to be a good source online for *the actual statement* of
+the principle… until now[^jk]!
 
 ## The Principle of Correspondence
 
@@ -26,7 +26,7 @@ published in *1981*:
 > a definition.) \[…\] For any parameter mechanism, an analogous
 > definition mechanism is possible, and *vice versa*. This is known as
 > the **_principle of correspondence_**.
-  
+
 <div class="citation">R.D. Tennent, <cite>Principles of Programming
   Languages, §9.1 Definitions and Blocks, p.130.</cite></div>
 
@@ -85,41 +85,9 @@ Yehuda Katz also falls prey to this in his otherwise excellent
 
 Gafter and Katz's contexts actually appear to be Tennent's principle
 of *qualification* in <cite>§9.3</cite> of Tennent's book. This is to
-code blocks what *correspondence* is to parameters & variable
-definitions. I'm splitting hairs here, but that's what programmers do!
-
-## Ramifications of the principle
-
-Tennent doesn't pass judgment in his book, only stating that
-
-> \[…\]the principle of correspondence can be useful to a language
->  designer by pointing out possible inconsistencies and deficiencies.
-
- In Neal Gafter's previously mentioned
-[adding closures to Java][gafter-java-closures][^java-closures], Neal
-has stronger words
-
-> Tennent's principles are very powerful because violations of them
-> tend to show up in the language as flaws, irregularities,
-> unnecessary restrictions, unexpected interactions or complications,
-> and so on.
-
-In [Douglas Crockford's article][crockford-tcp] – which sadly has
-disappeared from the face of the Internet, leaving only a possibly
-incomplete RSS-feed remnant – Crockford states
-
-> the Correspondence Principle is descriptive, not prescriptive. He
-> uses it to analyze the (by now forgotten) Pascal programming
-> language, showing a correspondence between variable definitions and
-> procedure parameters.
-
-Crockford also notes that 
-
-> Tennent does not identify the lack of correspondence of `return`
-> statements as a problem.
-
-In fact I have not found any references to `return` statements in the
-book at all.
+code blocks and function bodies what *correspondence* is to parameters
+& variable definitions. I'm splitting hairs here, but that's what
+we programmers do.
 
 ## An Example
 
@@ -141,7 +109,7 @@ procedure inc(var i : integer);
   begin
     i := i + 1
   end;
-  
+
 var x : integer;
 begin
   x := 1;
@@ -164,12 +132,14 @@ printf("%d", x);
 
 also results in `2`.
 
-<aside markdown="1">
 Interestingly, I believe these examples aren't directly replicable in
 Ruby or Javascript, as you can't pass *l-values* to a function, only
 *r-values*. The only way that I can think of to approximate it is by
-defining `inc` as a lambda with a free variable. But, buyer beware.
+defining `inc` as a lambda with a free variable. This doesn't mean
+that either language violates the principle of correspondence, as
+neither Ruby nor Javascript have a way to define a reference
 
+<aside>
 For reference, since I only just learnt these definitions myself, an
 *l-value* is the *location* or *address* of a variable, and an
 *r-value* is the *value* that the variable contains.
@@ -191,16 +161,52 @@ and we can see that C's parameter mechanisms have
 generally[^c-qual] equivalent block definition
 counterparts, where PASCAL does not.
 
+## Ramifications of the principle
+
+Tennent doesn't pass judgment in his book, only stating that
+
+> \[…\] the principle of correspondence can be useful to a language
+>  designer by pointing out possible inconsistencies and deficiencies.
+
+In Neal Gafter's previously mentioned
+[adding closures to Java][gafter-java-closures][^java-closures], Neal
+has stronger words
+
+> Tennent's principles are very powerful because violations of them
+> tend to show up in the language as flaws, irregularities,
+> unnecessary restrictions, unexpected interactions or complications,
+> and so on.
+
+Douglas Crockford [wrote a quick overview][crockford-tcp] – which
+sadly has disappeared from the face of the Internet, leaving only a
+possibly incomplete RSS-feed remnant. Crockford states
+
+> the Correspondence Principle is descriptive, not prescriptive. He
+> uses it to analyze the (by now forgotten) Pascal programming
+> language, showing a correspondence between variable definitions and
+> procedure parameters.
+
+Crockford also notes that
+
+> Tennent does not identify the lack of correspondence of `return`
+> statements as a problem.
+
+In fact I have not found any references to `return` statements in the
+book at all.
+
 ## Further reading
 
 Languishing at the bottom of the aforementioned
-[`programmers.stackoverflow`][stackexchange-tcp] thread – and, let's be honest, at the
-bottom of this article too – is a an excellent comment with links to
+[`programmers.stackoverflow`][stackexchange-tcp] thread – and, let's
+be honest, at the bottom of this article too – is a an excellent
+comment with links to
 [an excellent post about Tennent's principles][claus-tennent] by Claus
-Reinke; the Tennent paper that Claus is referring to:
-[Language design methods based on semantic principles][tennent-semantic-principles];
-and to an intriguing looking paper by Reinke,
-[On functional programming, language design, and persistence][claus-fpldp]
+Reinke; the Tennent paper that Claus is referring to,
+[Language design methods based on semantic principles][tennent-semantic-principles]
+– unfortunately hidden behind a paywall; and to an intriguing looking
+paper by Reinke,
+[On functional programming, language design, and persistence][claus-fpldp]. From
+the abstract:
 
 > Is there any reason to prefer functions as units of programming over
 > other forms, such as predicates, relations, objects, processes,
@@ -211,7 +217,7 @@ papers, so this is as much further reading for me as for you.
 
 [^c-qual]: I'm hardly a C expert, thus the qualification.
 [^java-closures]: Wait, this discussion has been going on for that long?!
-[^jk]: Take this as eccentric writing, rather than egotistical. Please?
+[^jk]: What is more likely is that my Google-Fu failed me.
 
 [gafter-java-closures]: http://gafter.blogspot.com.au/2006/08/tennents-correspondence-principle-and.html
 [google-serp-tcp]: http://www.google.com/search?q=Tennent's+correspondence+principle
