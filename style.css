@@ -105,11 +105,11 @@ article div.highlight {
 }
 
 article pre {
-  width: 800px;
+  width: 770px;
   margin: 0;
 }
 
-article p code {
+article p code, article h3 code {
   padding: 0.1em 0.2em;
   margin: -0.1em 0;
   border-radius: .2em;
@@ -120,7 +120,12 @@ article p code {
   font-size: 17px;
 }
 
-article pre code {
+article a:hover code {
+  background-color: transparent !important;
+  border-color: transparent !important;
+}
+
+article code {
   font-family: Inconsolata;
 }
 
@@ -139,17 +144,19 @@ h1, h2, h3 {
   margin-bottom: 66px;
 }
 
-h2 {
+h2, h3 {
   font-size: 24px;
   padding-top: 28px;
   margin-bottom: 11px;
 }
 
-h3 {
+article h3 {
+  font-style: italic;
+}
+
+article h3 code {
   font-size: 22px;
-  line-height: 25px;
-  padding-top: 23px;
-  margin-bottom: 2px;
+  line-height: 36px;
 }
 
 h1 + time, h2 + time, h3 + time {
