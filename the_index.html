@@ -5,31 +5,28 @@
   <head>
     <meta charset='utf-8'>
 
-    <title>The Techscursion Archive.</title>
+    <title>The Techscursion Index.</title>
 
     <link rel="stylesheet" href="/style.css" type="text/css">
   </head>
 
   <body id="archive">
-    <h1>The Techscursion Archive</h1>
+    <h1>The Techscursion Index</h1>
 
+    {% for category in site.categories %}
     <section id="recent">
-      {% for page in site.posts %}
-      <article class="{{page.layout}}">
+      <h2 id="{{category[0]}}">{{category[0]}}</h2>
+
+      {% for page in category[1] %}
+      <article class={{page.layout}}>
         <h3><a href="{{page.url}}">{{ page.title }}</a></h3>
         {% if page.date %}
-        <time>
-          {% if page.layout == "link" %}
-          Linked to
-          {% else %}
-          Published
-          {% endif %}
-          on {{ page.date | date_to_long_string }}
-        </time>
+        <time>Linked to on {{ page.date | date_to_long_string }}</time>
         {% endif %}
       </article>
-      {% endfor %}
+    {% endfor %}
     </section>
+    {% endfor %}
 
     <footer>
       <p>

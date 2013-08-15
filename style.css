@@ -263,3 +263,12 @@ article#front p {
   padding-top: 55px;
   margin-bottom: 43px;
 }
+
+.link h3 {
+  display: inline;
+  font-size: 18px;
+}
+
+.link time {
+  display: inline;
+}

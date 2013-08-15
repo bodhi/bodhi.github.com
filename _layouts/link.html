@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+  <head>
+    <meta charset='utf-8'>
+
+    <title>{{ page.title | markdown }}. A brief <em>Techscursion.</em></title>
+
+    <link rel="stylesheet" href="/style.css" type="text/css">
+    <link rel="stylesheet" href="/pygments.css" type="text/css">
+  </head>
+
+  <body>
+    <article>
+      <h1><a href="{{page.link}}">{{ page.title | markdown }}</a></h1>
+      {% if page.date %}
+      <time>Linked to on {{ page.date | date_to_long_string }}</time>
+      {% endif %}
+      {{ content }}
+      <a href="{{page.link}}">&lt;{{page.link}}></a>
+
+      <aside>
+        Filed under:
+        {% for category in page.categories %}
+        <a href="/the_index#{{category}}"><em>{{category}}</em></a>{% if forloop.rindex0 > 1 %},{% endif %}{% if forloop.rindex0 == 1 %}
+        and
+        {% endif %}{% endfor %}.
+      </aside>
+    </article>
+    <footer>
+      <p>A brief <a href="/">Techscursion</a>. There may be more in the <a href="/archive">archive</a>. <a href="/about">Read about the site</a>, if you like.</p>
+    </footer>
+  </body>
+</html>

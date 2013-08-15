@@ -17,9 +17,18 @@
       <h2>Recent Techscursions</h2>
 
     {% for page in site.posts limit:5 %}
-    <article>
+    <article class={{page.layout}}>
       <h3><a href="{{page.url}}">{{ page.title }}</a></h3>
-      <time>Published on {{ page.date | date_to_long_string }}</time>
+      {% if page.date %}
+      <time>
+        {% if page.layout == "link" %}
+        Linked to
+        {% else %}
+        Published
+        {% endif %}
+        on {{ page.date | date_to_long_string }}
+      </time>
+      {% endif %}
       {{page.intro | markdown }}
     </article>
     {% endfor %}
