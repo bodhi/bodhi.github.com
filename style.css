@@ -49,13 +49,13 @@ article, section, footer, div.footnotes, div.citation {
   margin-bottom: 48px;
 }
 
-article > p, article > ol, article > ul, article > aside, article > div.highlight, article > blockquote, div.footnotes > ol {
+article > p, article > ol, article > ul, article > aside, article > div.highlight, article > blockquote, div.footnotes > ol, div.citation {
   width: 800px;
   line-height: 25px;
 }
 
 article > a, article > blockquote, article > ol, article > ul, article > aside {
-  margin: 10px 0 15px;
+  margin: 25px 0 25px;
   display: block;
 }
 
@@ -65,7 +65,7 @@ article > hr, div.footnotes > hr {
 }
 
 article > a {
-  margin-bottom: 16px;
+  margin: 24px 0 25px;
 }
 
 article > blockquote {
@@ -100,8 +100,8 @@ article div.highlight {
   -webkit-box-orient: vertical;
   -webkit-box-align: center;
 
-  padding: 5px 0 9px;
-  margin: 4px 0 5px;
+  padding: 7px 0 17px;
+  margin: 17px 0 7px;
 }
 
 article pre {
@@ -146,7 +146,7 @@ h1, h2, h3 {
 
 h2, h3 {
   font-size: 24px;
-  padding-top: 28px;
+  padding-top: 53px;
   margin-bottom: 11px;
 }
 
@@ -184,8 +184,12 @@ aside, div.footnotes, div.citation {
 }
 
 div.citation {
-  margin-top: -12px;
-  margin-bottom: 17px;
+  margin-top: -24px;
+  margin-bottom: 24px;
+
+  width: 385px;
+  margin-left: 385px;
+
 }
 
 hr {
