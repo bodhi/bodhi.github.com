@@ -15,11 +15,11 @@ body, article {
 
 a {
   color: #09F;
-  transition: all 500ms ease;
-  -webkit-transition: all 500ms ease;
-  -moz-transition: all 500ms ease;
-  -o-transition: all 500ms ease;
-  -ms-transition: all 500ms ease;
+  transition: all 250ms ease;
+  -webkit-transition: all 250ms ease;
+  -moz-transition: all 250ms ease;
+  -o-transition: all 250ms ease;
+  -ms-transition: all 250ms ease;
   padding: 0.1em 0.2em;
   margin: -0.1em -0.2em;
   border-radius: .2em;
@@ -37,7 +37,7 @@ a:hover {
 }
 
 article {
-  margin: 50px 0;
+  margin: 75px 0;
 }
 
 article, section, footer, div.footnotes, div.citation {
@@ -55,17 +55,17 @@ article > p, article > ol, article > ul, article > aside, article > div.highligh
 }
 
 article > a, article > blockquote, article > ol, article > ul, article > aside {
-  margin: 25px 0 25px;
+  margin: 25px 0;
   display: block;
 }
 
-article > hr, div.footnotes > hr {
-  margin: 19px 0 0;
-  padding-bottom: 30px;
+article > hr {
+  margin: 25px 0 0;
+  padding-bottom: 25px;
 }
 
 article > a {
-  margin: 24px 0 25px;
+  margin: 25px 0;
 }
 
 article > blockquote {
@@ -100,8 +100,8 @@ article div.highlight {
   -webkit-box-orient: vertical;
   -webkit-box-align: center;
 
-  padding: 7px 0 17px;
-  margin: 17px 0 7px;
+  padding: 12px 0;
+  margin: 25px 0;
 }
 
 article pre {
@@ -133,15 +133,16 @@ article p + p {
   text-indent: 15px;
 }
 
-
 h1, h2, h3 {
   text-align: center;
   font-weight: normal;
-  font-size: 36px;
   letter-spacing: -1px;
   line-height: 36px;
-  padding-top: 5px;
-  margin-bottom: 66px;
+}
+
+h1 {
+  font-size: 36px;
+  margin-bottom: 100px;
 }
 
 h2, h3 {
@@ -160,16 +161,15 @@ article h3 code {
 }
 
 h1 + time, h2 + time, h3 + time {
-  font-size: 16px;
   color: #999;
   display: block;
   text-align: center;
-  height: 25px;
-  margin: -48px 0 23px;
+  font-style: italic;
 }
 
-h2 + time, h3 + time {
-  margin: 4px 0 -2px;
+h1 + time {
+  height: 25px;
+  margin: -75px 0 50px;
 }
 
 sup {
@@ -184,12 +184,11 @@ aside, div.footnotes, div.citation {
 }
 
 div.citation {
-  margin-top: -24px;
-  margin-bottom: 24px;
+  margin-top: -25px;
+  margin-bottom: 25px;
 
   width: 385px;
   margin-left: 385px;
-
 }
 
 hr {
@@ -199,7 +198,7 @@ hr {
 }
 
 div.footnotes {
-  padding-bottom: 2px;
+  margin-top: 25px;
 }
 
 div.footnotes li p {
@@ -233,20 +232,15 @@ footer a:hover:visited {
 }
 
 article#front {
-  margin-bottom: 13px;
+  margin-bottom: 25px;
 }
 
 article#front p {
   font-size: 24px;
-  margin: -2px 0 2px;
 
   width: 650px;
   text-align: center;
   font-style: italic;
-}
-
-#recent {
-  padding: 12px 0 11px;
 }
 
 #recent h2 {
@@ -254,18 +248,35 @@ article#front p {
 }
 
 #recent article {
-  margin: 0 0 4px;
+  margin: 0 0 25px;
 }
 
 #recent article h3 {
   margin: 0;
-  padding-top: 19px;
-  height: auto;
+  padding: 0;
+  font-style: normal;
+}
+
+#archive, #the-index {
+  padding-top: 75px;
 }
 
 #archive h1 {
-  padding-top: 55px;
   margin-bottom: 43px;
+}
+
+#the-index h2 {
+  padding-top: 0;
+  margin-bottom: 0;
+  font-style: italic;
+}
+
+#the-index section {
+  margin-bottom: 25px;
+}
+
+#the-index article {
+  margin-bottom: 0;
 }
 
 .link h3 {
