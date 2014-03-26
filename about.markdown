@@ -20,7 +20,7 @@ writing stuff too.
 
 ---
 
-Techscursion is written by me, Bodhi Philpot. I'm a software developer
+Techscursion is written by me, Bodhi. I'm a software developer
 working mostly in the echo-chamber of web application development. I
 work for [The Plant](http://theplant.jp), have a neglected… er…
 creative outlet over at [Keshiki](http://keshiki.net) - which has been
