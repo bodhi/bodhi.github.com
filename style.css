@@ -88,7 +88,7 @@ article li p {
   width: auto;
 }
 
-article div.highlight {
+article div.highlight, article > pre {
   width: 100%;
   background: #F9F9F9 !important;
   background: rgba(240, 240, 240, 0.6) !important;
@@ -104,9 +104,14 @@ article div.highlight {
   margin: 25px 0;
 }
 
-article pre {
+article .highlight pre {
   width: 770px;
   margin: 0;
+}
+
+article > pre > code {
+  display: block;
+  width: 770px;
 }
 
 article p code, article h3 code {
