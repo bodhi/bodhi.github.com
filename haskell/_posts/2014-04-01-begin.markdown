@@ -13,7 +13,7 @@ Lets define the domain as
 
 > The time it takes you to solve a Rubik's Cube.
 
-First up, lets think about the info we need. The input info is
+First up, lets <del>think about</del> invent the info we need. The input info is
 
 * Age, let's say 18..80. Rubik's Cubes are obviously adult-themed, thus 18+, and if you are over 80, I'll give even odds that you're dead.
 
@@ -78,4 +78,4 @@ Cool. Hmm, bare `Age` constructor seems to be available too, but maybe that's a 
     *Age> Age 24
     Age 24
 
-Next up, fleshing out the other data types…
+Next up, [fleshing out the other data types]({% post_url 2014-04-04-step-2 %})…
