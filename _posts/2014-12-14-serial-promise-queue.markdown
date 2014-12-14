@@ -189,5 +189,5 @@ So we use the promise as the end of the queue, but [actually use the
 thunk](http://metrouk2.files.wordpress.com/2014/03/ghostbusters.gif)
 as the *thing* that is executed when the current action completes.
 
-Put it all together, et volià. A queue that will serialise
+Put it all together, et voilà. A queue that will serialise
 asynchronous actions. No warranty expressed or implied.
