@@ -1,0 +1,428 @@
+---
+layout: plain
+title: "Solver #1"
+parent: /2014/11/sudoku.html
+---
+
+<h1>Solver #1.</h1>
+
+<script src="http://fb.me/react-0.12.1.min.js"></script>
+<script src="http://fb.me/JSXTransformer-0.12.1.js"></script>
+<style>
+  .game {
+   width: 330px;
+  height: 350px;
+  }
+
+  .block {
+  float: left;
+  width: 108px;
+  border: 1px solid #333;
+  }
+
+  .cell {
+  width: 30px;
+  height: 30px;
+  float: left;
+  padding: 2px;
+  border: 1px solid #999;
+   position: relative;
+  color: white;
+  }
+
+  .option {
+    width: 10px;
+    height: 10px;
+  line-height: 10px;
+  float: left;
+  font-size: 10px;
+  text-align: center;
+  }
+
+  .excluded {
+    color: #EEE;
+    text-decoration: line-through;
+  }
+
+  .deleted {
+    color: #F00;
+  }
+
+  .chosen {
+  width: 100%;
+  height: 100%;
+  line-height: 100%;
+  font-size: 30px;
+  border: none;
+  background: rgba(255, 255, 255, 1);
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: black;
+  }
+
+</style>
+
+<div id="game">
+</div>
+
+<script type="text/jsx">
+
+var Option = React.createClass({
+  render: function() {
+var className = "option";
+if (this.props.digit == this.props.option.value) {
+className += " chosen";
+                          } else {
+if (this.props.option.possible.indexOf(this.props.digit) == -1) className += " excluded";
+}
+if (!!this.props.option.deleted && this.props.option.deleted.indexOf(this.props.digit) != -1) className += " deleted";
+    return (
+<div className={className}>
+  {this.props.digit}
+  </div>
+    );
+  }
+});
+
+var Cell = React.createClass({
+  render: function() {
+     var options = [];
+     for (var i = 1; i <= 9; ++i) {
+        options.push(<Option digit={i} option={this.props.cell} />);
+     }
+
+    return (
+<div className="cell">
+  {options}
+</div>
+    );
+  }
+});
+
+var Block = React.createClass({
+  render: function() {
+     var cells = [];
+     for (var i = 0; i < 9; ++i) {
+        cells.push(<Cell cell={this.props.block[i]} />);
+     }
+
+   return (
+     <div className="block">
+       {cells}
+    </div>
+);
+}
+});
+
+     data = [
+     [
+     3, null, null,
+     null, 5, null,
+     null, null, 9
+     ],
+     [
+     null, 2, null,
+     null, 4, null,
+     null, 6, null
+     ],
+     [
+     null, null, 1,
+     null, null, 8,
+     null, null, 5
+     ],
+     [
+     1, null, null,
+     null, null, null,
+     null, 7, null
+     ],
+     [
+     null, null, null,
+     null, null, null,
+     null, null, null
+     ],
+     [
+     null, null, null,
+     null, null, null,
+     null, null, null
+     ],
+     [
+     null, null, null,
+     null, null, null,
+     null, null, null
+     ],
+     [
+     null, null, null,
+     null, null, null,
+     null, null, null
+     ],
+     [
+     null, null, null,
+     null, null, null,
+     null, null, null
+     ]
+     ]
+
+var Game = React.createClass({
+  render: function() {
+     var blockGame = toRows(this.props.game, 3, 9);
+     var blocks = [];
+     for (var i = 0; i < 81; i += 9) {
+        blocks.push(<Block block={blockGame.slice(i, i + 9)} />);
+     }
+   return (
+     <div className="game">
+       {blocks}
+    </div>
+);
+}
+});
+
+function cellsWithValue(game) {
+     log("Set cells with 1 possiblity");
+     return game.map(function(cell) {
+             newCell = { value: cell.value, possible: cell.possible, deleted: [] }
+             if (!!cell.value) {
+                  newCell.possible = [];
+             } else if (cell.possible.length == 1) {
+                  newCell.value = cell.possible[0];
+                  newCell.deleted = cell.possible;
+                  newCell.possible = [];
+             }
+             return newCell;
+     });
+}
+
+function reduceBlock(game) {
+     return game.map(function(block) {
+         values = block.map(function(cell) {
+              return cell.value;
+         }).filter(function(val) { return !!val });
+
+         return block.map(function(cell) {
+             var possible = !!cell.value ? [] : cell.possible.filter(function(val) { return values.indexOf(val) == -1  });
+var deleted = cell.possible.filter(function(val) { return values.indexOf(val) != -1  && val != cell.value });
+             return {
+                value: cell.value,
+                possible: possible,
+                deleted: deleted,
+             };
+         });
+     });
+}
+
+function transpose(game) {
+     var newGame = [];
+     for (var i = 0; i < game.length; ++i) {
+       newGame[i] = [];
+       for (var j = 0; j < game[i].length; ++j) {
+         newGame[i][j] = game[j][i];
+       }
+     }
+     return newGame;
+}
+
+function log(action) {
+   document.getElementById("log").textContent += action + "\n";
+}
+
+function reduceRows(game, type) {
+  var newGame = inGroupsOf(game, 9);
+  var reduced = reduceBlock(newGame);
+  log("Eliminate by " + (type || "row"));
+  return flatten(reduced);
+}
+
+function reduceColumns(game) {
+  var newGame = transpose(inGroupsOf(game, 9));
+  var reduced = reduceBlock(newGame);
+  log("Eliminate by column");
+  return flatten(transpose(reduced));
+}
+
+function reduceBlocks(game) {
+  var newGame = toRows(game, 3, 9);
+  var reduced = reduceRows(newGame, "block");
+  return toRows(reduced, 3, 9);
+}
+
+function render(game) {
+     React.render(
+     <Game game={game} />,
+     document.getElementById("game")
+     );
+}
+
+function flatten(array) {
+     return array.reduce(function(memo, val) {
+       if (Array.isArray(val)) {
+         return memo.concat(flatten(val));
+       } else {
+         memo.push(val);
+         return memo;
+       }
+     }, []);
+}
+
+function inGroupsOf(arr, n) {
+     return arr.reduce(function(memo, val, i) {
+         if (i % n == 0) memo.push([]);
+         memo[memo.length - 1].push(val);
+         return memo;
+     }, []);
+}
+
+function toRows(blocks, blockLength, rowLength) {
+     var blockRows = inGroupsOf(blocks, blockLength * rowLength);
+     linearRows = blockRows.map(function(blockRow) {
+       return flatten(transpose(inGroupsOf(inGroupsOf(inGroupsOf(blockRow, blockLength), rowLength)[0], blockLength)));
+     });
+     return flatten(linearRows);
+}
+
+function infer(rows) {
+     var newRows = rows.map(function(row) {
+     return row.map(function(cell) {
+        var newCell = {
+           value: cell.value,
+           possible: cell.possible,
+           deleted: []
+        }
+        if (!!cell.value) return newCell;
+     
+        var onlyHere = cell.possible.reduce(function(memo, val) {
+          if (row.every(function(otherCell) {
+              return (otherCell.value != val && otherCell.possible.indexOf(val) == -1) || otherCell === cell
+            })) {
+            memo.push(val);
+          }
+          return memo;
+        }, []);
+
+        if (onlyHere.length > 1) {
+                         debugger;
+           throw(onlyHere);
+        } else if (onlyHere.length == 1) {
+           return {
+             value: onlyHere[0],
+             possible: [],
+             deleted: cell.possible
+           }
+        } else {
+           return newCell;
+        }
+     });
+     });
+return newRows;
+}
+
+function inferRows(game) {
+     log("Infer by row");
+     var rows = inGroupsOf(game, 9);
+     return flatten(infer(rows));
+}
+
+
+function inferColumns(game) {
+     log("Infer by column");
+     var rows = inGroupsOf(game, 9);
+     return flatten(transpose(infer(transpose(rows))));
+}
+
+function inferBlocks(game) {
+     log("Infer by block");
+     var rows = inGroupsOf(toRows(game, 3, 9), 9);
+     return toRows(flatten(infer(rows)), 3, 9);
+}
+
+dataStr = "\
+1..73....\
+..42....7\
+8...5...9\
+.5...8...\
+..7...38.\
+3...9.4..\
+.61.....2\
+...5.....\
+53....6..\
+";
+
+dataStr2 = "\
+8.5...4..\
+9..18...2\
+.3....8..\
+...87...6\
+.7.....1.\
+6...13...\
+..9....2.\
+7...62..9\
+..2...3.7\
+";
+
+data2 = dataStr.split("").map(function(i) { return i == "." ? null : parseInt(i, 10) })
+
+converter = function(cell) {
+         return {
+             value: cell,
+             possible: [1,2,3,4,5,6,7,8,9]
+     }
+}
+
+var game1 = flatten(data).map(converter);
+var game2 = data2.map(converter);
+
+var game = game2;
+
+                         actions = [cellsWithValue, reduceColumns, reduceRows, reduceBlocks, inferRows, inferColumns, inferBlocks];
+actionId = 0;
+
+games = [game];
+
+noOpId = -1;
+
+function step() {
+     game = actions[actionId](games[games.length - 1]);
+     games.push(game);
+     actionId = (actionId + 1) % actions.length;
+
+     if (false && flatten(game.map(function(cell) { return cell.deleted; })).length > 0) {
+         step();
+     }
+
+     if (flatten(game.map(function(cell) { return cell.deleted; })).length == 0) {
+        noOpId += 1;
+     } else {
+        noOpId = -1;
+     } 
+
+     if (noOpId == actions.length) {
+       log("Stuck!")
+       document.getElementById("step").disabled = true;
+     } else {
+       step();
+     }
+
+     render(game);
+}
+
+function rewind() {
+    log("Step back");
+    games.pop();
+    actionId = (actionId + actions.length - 1) % actions.length;
+    render(games[games.length - 1]);
+
+    noOpId = -1;
+
+    document.getElementById("step").disabled = false;
+}
+
+render(game);
+
+</script>
+
+<div>
+<button id="step" onclick="step()">Solve</button>
+<!-- <button onclick="rewind()">Back</button> -->
+<pre id="log">
+</pre>
+</div>
