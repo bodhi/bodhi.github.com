@@ -1,0 +1,51 @@
+  .game {
+   width: 330px;
+  height: 350px;
+  }
+
+  .block {
+  float: left;
+  width: 108px;
+  border: 1px solid #333;
+  }
+
+  .cell {
+  width: 30px;
+  height: 30px;
+  float: left;
+  padding: 2px;
+  border: 1px solid #999;
+   position: relative;
+  color: white;
+  }
+
+  .option {
+    width: 10px;
+    height: 10px;
+  line-height: 10px;
+  float: left;
+  font-size: 10px;
+  text-align: center;
+  }
+
+  .excluded {
+    color: #EEE;
+    text-decoration: line-through;
+  }
+
+  .deleted {
+    color: #F00;
+  }
+
+  .chosen {
+  width: 100%;
+  height: 100%;
+  line-height: 35px;
+  font-size: 30px;
+  border: none;
+  background: rgba(255, 255, 255, 1);
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: black;
+  }
