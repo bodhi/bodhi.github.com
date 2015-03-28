@@ -16,7 +16,7 @@ var Option = React.createClass({
     }
 });
 
-Cell = React.createClass({
+var Cell = React.createClass({
     render: function() {
         var options = [];
         for (var i = 1; i <= 9; ++i) {

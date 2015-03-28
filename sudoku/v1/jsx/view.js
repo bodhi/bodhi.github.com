@@ -9,14 +9,14 @@ var Option = React.createClass({displayName: 'Option',
         }
         if (!!this.props.option.deleted && this.props.option.deleted.indexOf(this.props.digit) != -1) className += " deleted";
         return (
-            React.createElement("div", {className: className}, 
+            React.createElement("div", {className: className},
             this.props.digit
             )
         );
     }
 });
 
-Cell = React.createClass({displayName: 'Cell',
+var Cell = React.createClass({displayName: 'Cell',
     render: function() {
         var options = [];
         for (var i = 1; i <= 9; ++i) {
@@ -24,7 +24,7 @@ Cell = React.createClass({displayName: 'Cell',
         }
 
         return (
-            React.createElement("div", {className: "cell"}, 
+            React.createElement("div", {className: "cell"},
             options
             )
         );
@@ -39,7 +39,7 @@ var Block = React.createClass({displayName: 'Block',
         }
 
         return (
-            React.createElement("div", {className: "block"}, 
+            React.createElement("div", {className: "block"},
             cells
             )
         );
@@ -55,7 +55,7 @@ var Game = React.createClass({displayName: 'Game',
             blocks.push(React.createElement(Block, {block: blockGame.slice(i, i + 9)}));
         }
         return (
-            React.createElement("div", {className: "game"}, 
+            React.createElement("div", {className: "game"},
             blocks
             )
         );
