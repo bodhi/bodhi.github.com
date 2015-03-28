@@ -13,7 +13,7 @@
   <body id="the-index">
     <h1>The Techscursion Index</h1>
 
-    {% for category in site.categories %}
+    {% for category in site.categories | sort %}
     <section id="recent">
       <h2 id="{{category[0]}}">{{category[0]}}</h2>
 
