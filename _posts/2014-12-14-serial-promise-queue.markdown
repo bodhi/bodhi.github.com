@@ -52,7 +52,7 @@ It has 3 interfaces:
 
 1. Queue an action that takes 2 parameters (identical to the signature
    for the parameter to `Promise`). The action *must* eventually call
-   one of `resolve or `reject`, otherwise the queue will deadlock.
+   one of `resolve` or `reject`, otherwise the queue will deadlock.
 
 2. Queue an action that takes no parameters, and returns a promise (or
    rather, something that is *thenable*).
