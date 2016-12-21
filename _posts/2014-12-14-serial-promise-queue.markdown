@@ -3,6 +3,14 @@ title: A serial queue for asynchronous operations in Javascript
 layout: default
 ---
 
+<aside markdown="1">
+*Note*: Thanks to
+[feedback from @mikegleasonjr](https://twitter.com/mikegleasonjr/status/806422620254203904),
+I've tweaked the original solution to this to avoid swallowing errors
+from "tasks" passed into the queue.
+</aside>
+
+
 Let's get straight to the point:
 
 {% highlight javascript %}
@@ -18,7 +26,7 @@ Queue = function() {
         } else {
           var result = item();
           if (result && result.then) {
-            result.then(resolve);
+            result.then(resolve).catch(reject);
           } else {
             resolve();
           }
@@ -26,7 +34,7 @@ Queue = function() {
       };
     });
 
-    queueEnd.then(thunk);
+    queueEnd.then(thunk).catch(thunk);
     queueEnd = promise;
 
     return promise;
@@ -43,8 +51,9 @@ it seems that the promise's function parameter is executed *before*
 the function returns. The thunk is necessary to work around this, to
 avoid executing the queued action (`item`) immediately.
 
-Also, there's no provision for handling failing actions. Not
-production code, blah blah blah.
+~~Also, there's no provision for handling failing actions. Not
+production code, blah blah blah.~~ See update note at the top of this
+article.
 
 ---
 
