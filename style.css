@@ -49,7 +49,7 @@ article, section, footer, div.footnotes, div.citation {
   margin-bottom: 48px;
 }
 
-article > p, article > ol, article > ul, article > aside, article > div.highlight, article > blockquote, div.footnotes > ol, div.citation {
+article > p, article > ol, article > ul, article > aside, article > figure.highlight, article > blockquote, div.footnotes > ol, div.citation {
   width: 800px;
   line-height: 25px;
 }
@@ -88,7 +88,7 @@ article li p {
   width: auto;
 }
 
-article div.highlight, article > pre {
+article figure.highlight, article > .highlighter-rouge {
   width: 100%;
   background: #F9F9F9 !important;
   background: rgba(240, 240, 240, 0.6) !important;
