@@ -1,4 +1,4 @@
 lsi: false
-highlighter: pygments
+highlighter: rouge
 permalink: /:year/:month/:title.html
 markdown: kramdown
