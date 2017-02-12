@@ -2,6 +2,7 @@
 <html lang="en-AU">
   <head>
     <meta charset='utf-8'>
+    <meta name="viewport" content="width=device-width">
 
     <title>{{ page.title }}. A Techscursion.</title>
 
@@ -13,7 +14,7 @@
     <article>
       <h1>{{ page.title }}</h1>
       {% if page.date %}
-      <time>Published on {{ page.date | date_to_long_string }}</time>
+      <time>{{ page.date | date_to_long_string }}</time>
       {% endif %}
       {{ content }}
     </article>
