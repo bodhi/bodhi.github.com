@@ -81,6 +81,7 @@ Yehuda Katz also falls prey to this in his otherwise excellent
 [JavaScript Needs Blocks][js-needs-blocks], when he states:
 
 > In short, Tennent’s Correspondence Principle says:
+>
 > > For a given expression `expr`, `lambda expr` should be equivalent.
 
 Gafter and Katz's contexts actually appear to be Tennent's principle
