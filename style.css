@@ -74,10 +74,11 @@ article > blockquote em {
   font-weight: bold;
 }
 
-article figure.highlight, article > .highlighter-rouge {
+article figure.highlight, article > .highlighter-rouge, article > pre {
     margin-left: 15px;
     padding-left: 15px;
     border-left: 0.1px solid #CCC;
+    color: #777;
 }
 
 article > pre > code {
@@ -215,9 +216,10 @@ footer a:hover:visited {
     article > aside {
         flex: 1 1 150px;
         max-width: 594px;
+        height: 0;
     }
 
-    article figure.highlight, article > .highlighter-rouge {
+    article figure.highlight, article > .highlighter-rouge, article > pre {
         padding-left: 10px;
         margin-left: 10px;
         flex-basis: 573px;
