@@ -165,10 +165,20 @@ Yes:
 
 ---
 
-Well, this was much less difficult than I was expecting. I'd read
+~~Well, this was much less difficult than I was expecting. I'd read
 about having to embed the callback as part of a closure, but I guess
 that's only required when you can't pass an app-specific reference
-when passing the callback to the API.
+when passing the callback to the API.~~
+
+[I found the problem I was referring to](https://stackoverflow.com/a/9295161):
+
+ > If you want to access a Haskell structure like `MVar` which doesn't
+   have a library function to convert it to a pointer representation
+   (meaning it is not supposed to be passed to C), then you need to do
+   partial function application.
+
+Of course my simplified model threw away an important detail: Interop
+through the FFI. Guess we now know the topic of the next post.
 
 ---
 
