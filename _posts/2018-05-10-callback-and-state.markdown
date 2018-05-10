@@ -127,6 +127,10 @@ Idle Curiosity
 
 Can we make the callback generic such that we can use either?
 
+<aside>
+Unsurprisingly, someone's already done it: <a
+href="http://hackage.haskell.org/package/StateVar">StateVar</a>
+</aside>
 Wrapper for the `MVar` or `IORef`:
 
 ``` sourceCode
