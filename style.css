@@ -219,6 +219,10 @@ footer a:hover:visited {
         height: 0;
     }
 
+    article > time + aside {
+        height: auto;
+    }
+
     article figure.highlight, article > .highlighter-rouge, article > pre {
         padding-left: 10px;
         margin-left: 10px;
